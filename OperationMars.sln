@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationMars", "OperationMars\OperationMars.csproj", "{EE9F79C7-E2FC-4875-B4A3-882E5B495A76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationMars.Tests", "OperationMars.Tests\OperationMars.Tests.csproj", "{558DA4D7-EA7D-4B67-82CF-92CC920909F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE9F79C7-E2FC-4875-B4A3-882E5B495A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9F79C7-E2FC-4875-B4A3-882E5B495A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9F79C7-E2FC-4875-B4A3-882E5B495A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9F79C7-E2FC-4875-B4A3-882E5B495A76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{558DA4D7-EA7D-4B67-82CF-92CC920909F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{558DA4D7-EA7D-4B67-82CF-92CC920909F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{558DA4D7-EA7D-4B67-82CF-92CC920909F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{558DA4D7-EA7D-4B67-82CF-92CC920909F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
