@@ -10,20 +10,22 @@ namespace OperationMars.Models
     public class Rover
     {
         public Rover() {
+            this.Id = Guid.NewGuid();
             this.Location = new Point(0, 0);
             this.Direction = Direction.North;
             this.State = RoverState.Active;
         }
 
         public Rover(int x, int y) {
+            this.Id = Guid.NewGuid();
             this.Location = new Point(x, y);
             this.Direction = Direction.North;
             this.State = RoverState.Active;
         }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
-        public int PlateauId { get; set; }
+        public Guid PlateauId { get; set; }
         public Point Location { get; set; }
         public Direction Direction { get; set; }
         public RoverState State { get; set; }

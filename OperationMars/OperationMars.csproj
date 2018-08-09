@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -116,12 +117,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\PlateauController.cs" />
+    <Compile Include="Controllers\RoverController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Plateau.cs" />
     <Compile Include="Models\Rover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\CreatePlateauRequest.cs" />
+    <Compile Include="Requests\CreateRoverRequest.cs" />
+    <Compile Include="Responses\CreatePlateauResponse.cs" />
+    <Compile Include="Responses\CreateRoverResponse.cs" />
+    <Compile Include="Responses\ResponseBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -137,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
