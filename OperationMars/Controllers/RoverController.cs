@@ -17,13 +17,12 @@ namespace OperationMars.Controllers
 
         public Rover Get(Guid id)
         {
-            return new Rover
-            {
-                Name = "test",
-                Location = new System.Drawing.Point(1, 2),
-                Direction = Direction.North
-            };
-            //return DataContext.Rovers.Where(p => p.Id == id).FirstOrDefault();
+            return DataContext.Rovers.Where(p => p.Id == id).FirstOrDefault();
+        }
+
+        [Route("api/rover/{id}/test")]
+        public Rover GetTest(Guid id) {
+            return DataContext.Rovers.Where(p => p.Id == id).FirstOrDefault();
         }
 
         public CreateRoverResponse Post(CreateRoverRequest request)
