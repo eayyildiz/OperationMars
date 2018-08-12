@@ -122,15 +122,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\RoverCommander.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Plateau.cs" />
     <Compile Include="Models\Rover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\CreatePlateauRequest.cs" />
     <Compile Include="Requests\CreateRoverRequest.cs" />
+    <Compile Include="Requests\RoverCommandRequest.cs" />
     <Compile Include="Responses\CreatePlateauResponse.cs" />
     <Compile Include="Responses\CreateRoverResponse.cs" />
     <Compile Include="Responses\ResponseBase.cs" />
+    <Compile Include="Responses\RoverCommandResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

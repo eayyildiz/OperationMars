@@ -1,4 +1,5 @@
-﻿using OperationMars.Models;
+﻿using OperationMars.Helpers;
+using OperationMars.Models;
 using OperationMars.Requests;
 using OperationMars.Responses;
 using System;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace OperationMars.Controllers
 {
+    [RoutePrefix("api/rover")]
     public class RoverController : ApiController
     {
         public IEnumerable<Rover> Get()
@@ -20,9 +22,17 @@ namespace OperationMars.Controllers
             return DataContext.Rovers.Where(p => p.Id == id).FirstOrDefault();
         }
 
-        [Route("api/rover/{id}/test")]
-        public Rover GetTest(Guid id) {
-            return DataContext.Rovers.Where(p => p.Id == id).FirstOrDefault();
+        [Route("{id}/command")]
+        public RoverCommandResponse PostCommand(Guid id, RoverCommandRequest request) {
+            RoverCommandResponse response = new RoverCommandResponse();
+            response.Rover = DataContext.Rovers.Where(p => p.Id == id).FirstOrDefault();
+            if (response.Rover != null) {
+                RoverCommander commander = new RoverCommander(response.Rover.Id);
+                response.Rover = commander.Execute(request.Commands);
+            }
+
+            response.FinalCoordinates = $"{response.Rover.Location.X}, {response.Rover.Location.Y}, {response.Rover.Direction.ToString().ElementAt(0)}";
+            return response;
         }
 
         public CreateRoverResponse Post(CreateRoverRequest request)
