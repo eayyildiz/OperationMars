@@ -13,7 +13,7 @@ namespace OperationMars.Helpers
         private Point TopRight;
 
         public RoverCommander(Guid RoverId) {
-            Rover = DataContext.Rovers.Where(r => r.Id == RoverId).FirstOrDefault();
+            Rover = DataContext.Rovers.Where(r => r.Id == RoverId && r.State == RoverState.Active).FirstOrDefault();
             if (Rover == null) {
                 throw new Exception("Rover not found");
             }
@@ -22,20 +22,12 @@ namespace OperationMars.Helpers
         }
 
         public Rover Execute(string Commands) {
-            try
-            {
                 while (!String.IsNullOrEmpty(Commands))
                 {
-
                     ExecuteSingleCommand(Commands.First());
                     Commands = Commands.Remove(0, 1);
                 }
                 return Rover;
-            }
-            catch {
-                return Rover;
-            }
-
         }
 
         protected void ExecuteSingleCommand(char Command) {

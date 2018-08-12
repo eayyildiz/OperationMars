@@ -25,6 +25,16 @@ namespace OperationMars.Models
                 State = RoverState.Active
             });
 
+            Rovers.Add(new Rover
+            {
+                Id = new System.Guid("67968965-e69a-420c-a28a-9e7109692140"),
+                Name = "RoverTest",
+                PlateauId = new System.Guid("653648ee-6a4b-4a12-ab74-b5f9663b06cd"),
+                Direction = Direction.North,
+                Location = new System.Drawing.Point(10, 10),
+                State = RoverState.Active
+            });
+
         }
 
         public static List<Plateau> Plateaus { get; set; }

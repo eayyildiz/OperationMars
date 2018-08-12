@@ -26,12 +26,20 @@ namespace OperationMars.Controllers
         public RoverCommandResponse PostCommand(Guid id, RoverCommandRequest request) {
             RoverCommandResponse response = new RoverCommandResponse();
             response.Rover = DataContext.Rovers.Where(p => p.Id == id).FirstOrDefault();
-            if (response.Rover != null) {
-                RoverCommander commander = new RoverCommander(response.Rover.Id);
-                response.Rover = commander.Execute(request.Commands);
-            }
+            if (response.Rover != null && response.Rover.State == RoverState.Active) {
+                try
+                {
+                    RoverCommander commander = new RoverCommander(response.Rover.Id);
+                    response.Rover = commander.Execute(request.Commands);
+                    response.FinalCoordinates = $"{response.Rover.Location.X}, {response.Rover.Location.Y}, {response.Rover.Direction.ToString().ElementAt(0)}";
+                    return (RoverCommandResponse)response.ReturnWithSuccess();
+                }
 
-            response.FinalCoordinates = $"{response.Rover.Location.X}, {response.Rover.Location.Y}, {response.Rover.Direction.ToString().ElementAt(0)}";
+                catch (Exception ex) {
+                    response.FinalCoordinates = $"{response.Rover.Location.X}, {response.Rover.Location.Y}, {response.Rover.Direction.ToString().ElementAt(0)}";
+                    return (RoverCommandResponse)response.ReturnWithErrors(ex.Message);
+                }
+            }
             return response;
         }
 
@@ -46,6 +54,10 @@ namespace OperationMars.Controllers
 
             try
             {
+                Rover CollindingRover = DataContext.Rovers.Where(r => r.Location == data.Location).FirstOrDefault();
+                if (CollindingRover != null) {
+                    throw new Exception($"There are another rover at Location: {data.Location}");
+                }
                 DataContext.Rovers.Add(data);
                 response.Data = data;
                 return (CreateRoverResponse)response.ReturnWithSuccess();
